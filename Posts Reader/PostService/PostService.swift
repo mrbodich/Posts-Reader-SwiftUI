@@ -7,14 +7,20 @@
 
 import Foundation
 
-protocol PostsService {
-    func fetchPosts(_ completionHandler: (_ posts: [Post]) -> ())
+protocol PostsFetchingService {
+    func fetchPosts(_ completionHandler: @escaping (_ posts: [Post]) -> ())
 }
 
-class TypicodePostsService: PostsService {
+class MockPostsFetchingService: PostsFetchingService {
     
-    func fetchPosts(_ completionHandler: ([Post]) -> ()) {
-        
+    func fetchPosts(_ completionHandler: @escaping ([Post]) -> ()) {
+        var posts: [Post] = []
+        for index in 1...40 {
+            posts.append(Post(author: "author \(index)", company: "company \(index)", postTitle: "Post \(index)", postBody: "Body random \(Int.random(in: 1...100))"))
+        }
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+            completionHandler(posts)
+        }
     }
     
 }

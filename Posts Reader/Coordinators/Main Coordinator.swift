@@ -11,21 +11,19 @@ protocol Coordinator {
     
 }
 
-class MainCoordinator: Coordinator, ObservableObject {
+final class MainCoordinator<T: PostsListViewModel>: Coordinator, ObservableObject {
     
-    private let postsService: PostsService
-    var viewModel: StandardPostsListViewModel
+    var viewModel: T
     
-    init(postsService: PostsService, listViewModel: StandardPostsListViewModel) {
-        self.postsService = postsService
-        self.viewModel = listViewModel
+    init(viewModel: T) {
+        self.viewModel = viewModel
     }
     
 }
 
-struct MainCoordinatorView: View {
+struct MainCoordinatorView<T: PostsListViewModel>: View {
     
-    var coordinator: MainCoordinator
+    var coordinator: MainCoordinator<T>
     
     var body: some View {
         PostsListView(viewModel: coordinator.viewModel)

@@ -10,10 +10,18 @@ import SwiftUI
 @main
 struct PostsReaderApp: App {
     
-    @StateObject var mainCoordinator = MainCoordinator(postsService: TypicodePostsService(), listViewModel: StandardPostsListViewModel(postsService: TypicodePostsService()))
+//    @StateObject var mainCoordinator: MainCoordinator<StandardPostsListViewModel>
+    @StateObject var mainCoordinator = MainCoordinator(viewModel: StandardPostsListViewModel(postsService: MockPostsFetchingService()))
+    
+//    init() {
+//        let postService = TypicodePostsService()
+//        mainCoordinator = MainCoordinator(postsService: TypicodePostsService(),
+//                                          viewModel: StandardPostsListViewModel(postsService: postService))
+//    }
     
     var body: some Scene {
         WindowGroup {
+//            PullToRefreshDemo()
             MainCoordinatorView(coordinator: mainCoordinator)
         }
     }

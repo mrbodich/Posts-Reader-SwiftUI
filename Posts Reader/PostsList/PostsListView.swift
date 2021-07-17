@@ -8,22 +8,36 @@
 import SwiftUI
 import Combine
 
-struct PostsListView: View  {
+struct PostsListView<T>: View where T: PostsListViewModel {
     
-    @ObservedObject var viewModel: StandardPostsListViewModel
+    @ObservedObject private var viewModel: T
+    @State private var isShowing = false
+    
+    init(viewModel: T) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
-        List(viewModel.posts) { post in
-            Text(post.author)
-//            print(post.author)
+        NavigationView {
+            List(viewModel.listItems) { post in
+                Text("\(post.author)  \(post.contentBody)")
+            }
+            .onAppear {
+                viewModel.updateItems()
+            }
+            .pullToRefresh(isShowing: $isShowing) {
+                viewModel.updateItems() {
+                    DispatchQueue.main.async {
+                        self.isShowing = false
+                    }
+                }
+            }
+            .onChange(of: self.isShowing) { value in
+            }
         }
-        
 
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PostsListView()
-//    }
-//}
+
+

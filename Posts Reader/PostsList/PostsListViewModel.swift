@@ -8,25 +8,30 @@
 import Combine
 import SwiftUI
 
-protocol PostsListViewModel {
-    var posts: [StandardPostCellViewModel] { get set }
-    func updatePosts()
+protocol PostsListViewModel: ObservableObject {
+    var listItems: [StandardPostCellViewModel] { get }
+    func updateItems(_ onCompletion: @escaping () -> ())
+    func updateItems()
 }
 
-class StandardPostsListViewModel: PostsListViewModel, ObservableObject {
+final class StandardPostsListViewModel: PostsListViewModel {
+    @Published var listItems: [StandardPostCellViewModel] = []
+    private let postsService: PostsFetchingService
     
-    private let postsService: PostsService
-    
-    init(postsService: PostsService) {
+    init(postsService: PostsFetchingService) {
         self.postsService = postsService
     }
     
-    @Published var posts: [StandardPostCellViewModel] = []
-    
-    func updatePosts() {
-        postsService.fetchPosts { [weak self] posts in
-            self?.posts = posts.map { StandardPostCellViewModel(for: $0) }
+    func updateItems(_ onCompletion: @escaping () -> ()) {
+        postsService.fetchPosts { posts in
+            self.listItems = posts.map {
+                StandardPostCellViewModel(for: $0)
+            }
+            onCompletion()
         }
     }
     
+    func updateItems() {
+        updateItems { }
+    }
 }
