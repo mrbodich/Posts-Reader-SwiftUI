@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E6E3BAD226A04835009E4D1F /* Posts_ReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3BAD126A04835009E4D1F /* Posts_ReaderApp.swift */; };
-		E6E3BAD426A04835009E4D1F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3BAD326A04835009E4D1F /* ContentView.swift */; };
+		E64C0D0726A2F58D0073EC7D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64C0D0626A2F58D0073EC7D /* Launch Screen.storyboard */; };
+		E64C0D0E26A2F8790073EC7D /* Main Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64C0D0D26A2F8790073EC7D /* Main Coordinator.swift */; };
+		E64C0D1126A2FBE30073EC7D /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64C0D1026A2FBE30073EC7D /* PostService.swift */; };
+		E64C0D1326A2FC5C0073EC7D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64C0D1226A2FC5C0073EC7D /* Post.swift */; };
+		E64C0D1526A2FE190073EC7D /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64C0D1426A2FE190073EC7D /* PostsListViewModel.swift */; };
+		E64C0D1826A3021C0073EC7D /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64C0D1726A3021C0073EC7D /* PostViewModel.swift */; };
+		E6A945A826A313D000BF2738 /* TestFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A945A726A313D000BF2738 /* TestFix.swift */; };
+		E6E3BAD226A04835009E4D1F /* PostsReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3BAD126A04835009E4D1F /* PostsReaderApp.swift */; };
+		E6E3BAD426A04835009E4D1F /* PostsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3BAD326A04835009E4D1F /* PostsListView.swift */; };
 		E6E3BAD626A04836009E4D1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E3BAD526A04836009E4D1F /* Assets.xcassets */; };
 		E6E3BAD926A04836009E4D1F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E3BAD826A04836009E4D1F /* Preview Assets.xcassets */; };
 		E6E3BAE426A04836009E4D1F /* Posts_ReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3BAE326A04836009E4D1F /* Posts_ReaderTests.swift */; };
@@ -33,9 +40,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E64C0D0626A2F58D0073EC7D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		E64C0D0D26A2F8790073EC7D /* Main Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main Coordinator.swift"; sourceTree = "<group>"; };
+		E64C0D1026A2FBE30073EC7D /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		E64C0D1226A2FC5C0073EC7D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		E64C0D1426A2FE190073EC7D /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
+		E64C0D1726A3021C0073EC7D /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		E6A945A726A313D000BF2738 /* TestFix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFix.swift; sourceTree = "<group>"; };
 		E6E3BACE26A04835009E4D1F /* Posts Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Posts Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6E3BAD126A04835009E4D1F /* Posts_ReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts_ReaderApp.swift; sourceTree = "<group>"; };
-		E6E3BAD326A04835009E4D1F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E6E3BAD126A04835009E4D1F /* PostsReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsReaderApp.swift; sourceTree = "<group>"; };
+		E6E3BAD326A04835009E4D1F /* PostsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListView.swift; sourceTree = "<group>"; };
 		E6E3BAD526A04836009E4D1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6E3BAD826A04836009E4D1F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E6E3BADA26A04836009E4D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +86,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E64C0D0826A2F73D0073EC7D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E64C0D1226A2FC5C0073EC7D /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E64C0D0926A2F7510073EC7D /* PostsList */ = {
+			isa = PBXGroup;
+			children = (
+				E64C0D1426A2FE190073EC7D /* PostsListViewModel.swift */,
+				E6E3BAD326A04835009E4D1F /* PostsListView.swift */,
+				E6A945A726A313D000BF2738 /* TestFix.swift */,
+			);
+			path = PostsList;
+			sourceTree = "<group>";
+		};
+		E64C0D0A26A2F7BD0073EC7D /* System */ = {
+			isa = PBXGroup;
+			children = (
+				E64C0D0626A2F58D0073EC7D /* Launch Screen.storyboard */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		E64C0D0B26A2F7FE0073EC7D /* PostDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PostDetails;
+			sourceTree = "<group>";
+		};
+		E64C0D0C26A2F8660073EC7D /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				E64C0D0D26A2F8790073EC7D /* Main Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		E64C0D0F26A2FBCC0073EC7D /* PostService */ = {
+			isa = PBXGroup;
+			children = (
+				E64C0D1026A2FBE30073EC7D /* PostService.swift */,
+			);
+			path = PostService;
+			sourceTree = "<group>";
+		};
+		E64C0D1626A301FA0073EC7D /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				E64C0D1726A3021C0073EC7D /* PostViewModel.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		E6E3BAC526A04835009E4D1F = {
 			isa = PBXGroup;
 			children = (
@@ -95,10 +166,16 @@
 		E6E3BAD026A04835009E4D1F /* Posts Reader */ = {
 			isa = PBXGroup;
 			children = (
-				E6E3BAD126A04835009E4D1F /* Posts_ReaderApp.swift */,
-				E6E3BAD326A04835009E4D1F /* ContentView.swift */,
-				E6E3BAD526A04836009E4D1F /* Assets.xcassets */,
+				E6E3BAD126A04835009E4D1F /* PostsReaderApp.swift */,
+				E64C0D0C26A2F8660073EC7D /* Coordinators */,
+				E64C0D0F26A2FBCC0073EC7D /* PostService */,
+				E64C0D0B26A2F7FE0073EC7D /* PostDetails */,
+				E64C0D0926A2F7510073EC7D /* PostsList */,
+				E64C0D1626A301FA0073EC7D /* Post */,
+				E64C0D0826A2F73D0073EC7D /* Model */,
+				E64C0D0A26A2F7BD0073EC7D /* System */,
 				E6E3BADA26A04836009E4D1F /* Info.plist */,
+				E6E3BAD526A04836009E4D1F /* Assets.xcassets */,
 				E6E3BAD726A04836009E4D1F /* Preview Content */,
 			);
 			path = "Posts Reader";
@@ -233,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E64C0D0726A2F58D0073EC7D /* Launch Screen.storyboard in Resources */,
 				E6E3BAD926A04836009E4D1F /* Preview Assets.xcassets in Resources */,
 				E6E3BAD626A04836009E4D1F /* Assets.xcassets in Resources */,
 			);
@@ -259,8 +337,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6E3BAD426A04835009E4D1F /* ContentView.swift in Sources */,
-				E6E3BAD226A04835009E4D1F /* Posts_ReaderApp.swift in Sources */,
+				E64C0D1526A2FE190073EC7D /* PostsListViewModel.swift in Sources */,
+				E64C0D1826A3021C0073EC7D /* PostViewModel.swift in Sources */,
+				E6E3BAD426A04835009E4D1F /* PostsListView.swift in Sources */,
+				E6E3BAD226A04835009E4D1F /* PostsReaderApp.swift in Sources */,
+				E64C0D0E26A2F8790073EC7D /* Main Coordinator.swift in Sources */,
+				E64C0D1126A2FBE30073EC7D /* PostService.swift in Sources */,
+				E64C0D1326A2FC5C0073EC7D /* Post.swift in Sources */,
+				E6A945A826A313D000BF2738 /* TestFix.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
