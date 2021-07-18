@@ -9,29 +9,47 @@ import Combine
 import SwiftUI
 
 protocol PostsListViewModel: ObservableObject {
-    var listItems: [StandardPostCellViewModel] { get }
+    var listItems: [PostDetailsViewModel] { get }
     func updateItems(_ onCompletion: @escaping () -> ())
-    func updateItems()
+    func loadItems()
+    func openPost(_ postViewModel: PostDetailsViewModel)
 }
 
-final class StandardPostsListViewModel: PostsListViewModel {
-    @Published var listItems: [StandardPostCellViewModel] = []
-    private let postsService: PostsFetchingService
+final class StandardPostsListViewModel: PostsListViewModel, ObservableObject {
+    typealias Coordinator = PostListCoordinator
     
-    init(postsService: PostsFetchingService) {
+    var posts: [Post] = [] {
+        didSet {
+            DispatchQueue.main.async { [self] in
+                self.listItems = posts.map {
+                    PostDetailsViewModel(for: $0, coordinator: coordinator, postsService: postsService)
+                }
+            }
+        }
+    }
+    @Published var listItems: [PostDetailsViewModel] = []
+    private let postsService: PostsFetchingService
+    unowned var coordinator: Coordinator
+    
+    init(postsService: PostsFetchingService, coordinator: Coordinator) {
         self.postsService = postsService
+        self.coordinator = coordinator
     }
     
     func updateItems(_ onCompletion: @escaping () -> ()) {
         postsService.fetchPosts { posts in
-            self.listItems = posts.map {
-                StandardPostCellViewModel(for: $0)
-            }
+            self.posts = posts
             onCompletion()
         }
     }
     
-    func updateItems() {
-        updateItems { }
+    func loadItems() {
+        if posts.count == 0 {
+            updateItems { }
+        }
+    }
+    
+    func openPost(_ postViewModel: PostDetailsViewModel) {
+        coordinator.open(postViewModel)
     }
 }
