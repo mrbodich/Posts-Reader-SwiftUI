@@ -7,17 +7,9 @@
 
 import Foundation
 
-extension Identifiable where ID: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
-struct Post: Identifiable {
-    let id = UUID()
-    
-    let author: String
-    let company: String
-    let postTitle: String
-    let postBody: String
+struct Post: Identifiable, Decodable {
+    let id: Int
+    let userId: Int
+    let title: String
+    let body: String
 }

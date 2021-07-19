@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct PostDetails: View {
+struct PostDetails<PostVM: PostViewModel>: View {
     
     @State private var isShowing = false
     
-    @ObservedObject var viewModel: PostDetailsViewModel
+    @ObservedObject var viewModel: PostVM
     
     var body: some View {
         
@@ -35,9 +35,9 @@ struct PostDetails: View {
 
 struct UserContainer: View {
     
-    @ObservedObject var userViewModel: UserViewModel
+    @ObservedObject var userViewModel: AuthorUserViewModel
     
-    init(userViewModel: UserViewModel) {
+    init(userViewModel: AuthorUserViewModel) {
         self.userViewModel = userViewModel
     }
     
@@ -63,10 +63,10 @@ struct UserContainer: View {
     }
 }
 
-struct PostContainer: View {
-    @ObservedObject var postViewModel: PostDetailsViewModel
+struct PostContainer<PostVM: PostViewModel>: View {
+    @ObservedObject var postViewModel: PostVM
     
-    init(postViewModel: PostDetailsViewModel) {
+    init(postViewModel: PostVM) {
         self.postViewModel = postViewModel
     }
     

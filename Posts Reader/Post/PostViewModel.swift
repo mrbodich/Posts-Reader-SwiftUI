@@ -8,13 +8,14 @@
 import Combine
 import SwiftUI
 
-protocol PostViewModel {
+protocol PostViewModel: ObservableObject {
     var contentTitle: String { get }
     var contentBody: String { get }
     var id: Int { get }
     
-    var userViewModel: UserViewModel { get }
+    var userViewModel: AuthorUserViewModel { get }
     func refreshUser()
+    func loadUser()
 }
 
 class PostDetailsViewModel: Identifiable, PostViewModel, ObservableObject {
@@ -28,13 +29,13 @@ class PostDetailsViewModel: Identifiable, PostViewModel, ObservableObject {
     var contentBody: String { post.body }
     var id: Int { post.id }
     
-    @ObservedObject var userViewModel: UserViewModel
+    @ObservedObject var userViewModel: AuthorUserViewModel
 
     init(for post: Post, coordinator: PostListCoordinator, postsService: PostsFetchingService) {
         self.coordinator = coordinator
         self.post = post
         self.postsService = postsService
-        self.userViewModel = UserViewModel(id: post.id)
+        self.userViewModel = AuthorUserViewModel(id: post.id)
     }
     
     var isUserLoading = false
@@ -55,7 +56,7 @@ class PostDetailsViewModel: Identifiable, PostViewModel, ObservableObject {
     }
     
     func updateState(with user: User) {
-        userViewModel = UserViewModel(user: user)
+        userViewModel = AuthorUserViewModel(user: user)
         self.objectWillChange.send()
     }
 }

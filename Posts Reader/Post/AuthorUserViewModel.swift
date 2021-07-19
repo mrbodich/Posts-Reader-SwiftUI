@@ -7,7 +7,17 @@
 
 import Foundation
 
-class UserViewModel: ObservableObject {
+protocol UserViewModel: ObservableObject {
+    var isEmpty: Bool { get }
+    var id: String { get }
+    var name: String { get }
+    var email: String { get }
+    var address: Address { get }
+    var phone: String { get }
+    var company: Company { get }
+}
+
+class AuthorUserViewModel: UserViewModel {
     private var urlString = "https://source.unsplash.com/collection/542909/?sig="
     private let _urlString = "https://source.unsplash.com/collection/542909/?sig="
     
