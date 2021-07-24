@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct PostDetails<PostVM: PostViewModel>: View {
+struct PostDetails: View {
     
     @State private var isShowing = false
     
-    @ObservedObject var viewModel: PostVM
+    @ObservedObject var viewModel: AnyPostViewModel
     
     var body: some View {
         

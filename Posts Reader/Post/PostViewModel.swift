@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-protocol PostViewModel: ObservableObject {
+protocol PostViewModel: ObservableObject, Identifiable {
     var contentTitle: String { get }
     var contentBody: String { get }
     var id: Int { get }
@@ -18,7 +18,42 @@ protocol PostViewModel: ObservableObject {
     func loadUser()
 }
 
-class PostDetailsViewModel: Identifiable, PostViewModel, ObservableObject {
+class AnyPostViewModel: PostViewModel {
+    var contentTitle: String
+    var contentBody: String
+    var id: Int
+    @ObservedObject var userViewModel: AuthorUserViewModel
+    
+    var _refreshUser: () -> ()
+    func refreshUser() {
+        _refreshUser()
+    }
+    
+    var _loadUser: () -> ()
+    func loadUser() {
+        _loadUser()
+    }
+    
+    let objectWillChange: AnyPublisher<Void, Never>
+    
+    init<ViewModel: PostViewModel>(wrapping viewModel: ViewModel) {
+        objectWillChange = viewModel.objectWillChange.map({ _ in }).eraseToAnyPublisher()
+        contentTitle = viewModel.contentTitle
+        contentBody = viewModel.contentBody
+        id = viewModel.id
+        userViewModel = viewModel.userViewModel
+        _refreshUser = viewModel.refreshUser
+        _loadUser = viewModel.loadUser
+    }
+}
+
+extension PostViewModel {
+    func eraseToAnyPostViewModel() -> AnyPostViewModel {
+        return AnyPostViewModel(wrapping: self)
+    }
+}
+
+class PostDetailsViewModel: PostViewModel {
     
     private let post: Post
     private var user: User?

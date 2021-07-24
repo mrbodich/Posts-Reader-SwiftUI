@@ -37,7 +37,7 @@ struct PostListCoordinatorView: View {
             PostsListView(viewModel: coordinator.viewModel)
                 .navigationBarTitle("Posts Feed", displayMode: .inline)
                 .navigation(item: $coordinator.detailViewModel) { details in
-                    PostDetails(viewModel: details)
+                    PostDetails(viewModel: details.eraseToAnyPostViewModel())
                 }
         }
         
